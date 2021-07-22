@@ -1,12 +1,8 @@
 import NavBar from "./NavBar";
 
- function Header (){
-    return(
+ const Header = () => 
         <>
-        <h1>Titulo</h1>
         <NavBar/>
         </>
 
-    )
-}
 export default Header
