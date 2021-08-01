@@ -1,0 +1,8 @@
+.divContador{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.divContador div{
+    margin-left: 10px;
+}

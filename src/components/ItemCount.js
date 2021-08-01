@@ -1,4 +1,6 @@
 import {useState} from 'react';
+import "./itemcount.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ItemCount = ({stock, initial, onAdd}) => {
 const [contador, setContador] = useState(initial)
@@ -22,12 +24,16 @@ const confirmar = () => {
 }
 
     return (
-        <div>
+        <>
+        <div className="divContador">
             <button onClick={restarContador}>-</button>
             <p>Cantidad: {contador}</p>
             <button onClick={sumarContador}>+</button>
-            <button onClick={confirmar}>Confirmar</button>
+                <div>
+                    <button onClick={confirmar}>Confirmar</button>
+                </div>
         </div>
+        </>
     )
 }
 
