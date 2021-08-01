@@ -15,10 +15,10 @@ const ItemListContainer = ({greeting}) =>{
     useEffect(() => {
         const promesa = new Promise((resolve)=>{
         setTimeout(()=>{
-                resolve(productos)
+                resolve(prod)
         },2000)
     })
-    promesa.then((productos)=>{
+    promesa.then((prod)=>{
         setProductos(prod)
     })
     },[])
