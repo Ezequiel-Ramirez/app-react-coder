@@ -6,21 +6,22 @@ const ItemDetailContainer = () => {
     const [producto, setProducto] = useState([])
 
     useEffect(() => {
+        
+        getItem();  
+    },[])
+    const getItem = () =>{
         setTimeout(()=>{
             fetch('https://fakestoreapi.com/products/1')
-            .then(respuesta=>respuesta.json())
+            .then(res=>res.json())
             .then(json=>console.log(json))
-            .then((prod)=>{setProducto(prod)})
+            .then((prod)=>setProducto(prod))
         },2000)
-    },[])
-    const getItems = () =>{
-        return(producto);
         
     }
-
+   
     return (
         <div>
-             <ItemDetail productos={getItems()}/>
+             <ItemDetail item={producto}/>
         </div>
     )
 }
