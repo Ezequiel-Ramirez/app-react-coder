@@ -7,18 +7,21 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
         
-        getItem();  
-    },[])
+        getItem();
+        
+        
+    },)
     const getItem = () =>{
         setTimeout(()=>{
             fetch('https://fakestoreapi.com/products/1')
             .then(res=>res.json())
             .then(json=>console.log(json))
-            .then((prod)=>setProducto(prod))
+            .then((prod)=>setProducto(prod));
         },2000)
         
     }
    
+
     return (
         <div>
              <ItemDetail item={producto}/>
