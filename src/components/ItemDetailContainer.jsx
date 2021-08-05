@@ -4,23 +4,27 @@ import ItemDetail from "./ItemDetail"
 const ItemDetailContainer = () => {
 
     const [producto, setProducto] = useState([])
-
-    useEffect(() => {
-        
-        getItem();
+    useEffect(()=>{
+    const getItem = new Promise ((res, rej) =>{
+    setTimeout(()=>{
+        const pedido = fetch('https://fakestoreapi.com/products/1')
+        pedido.then((respuesta)=>{
+            return respuesta.json()
+        })
+        .then((transformacion)=>{
+            res(transformacion)
+        })
+    },2000)
+})
+getItem.then((data_product)=>{
+    setProducto(data_product)
+})
+   
         
        
     },[])
-    const getItem = () =>{
-        setTimeout(()=>{
-            fetch('https://fakestoreapi.com/products/1')
-            .then(res=>res.json())
-            .then(json=>console.log(json))
-            .then((prod)=>setProducto(prod));
-            
-        },2000)
-        
-    }
+    console.log(producto)
+    
    
 
     return (
