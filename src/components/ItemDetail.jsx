@@ -1,15 +1,26 @@
 import React from 'react'
+import CardColumns from 'react-bootstrap/CardColumns'
+import Card from 'react-bootstrap/Card'
+
 
 const ItemDetail = ({item}) => {
     return (
-        <>
-        
-        <h3>{item.title}</h3>
-        <h3>{item.category} </h3>
-        <h5>{item.description}</h5>
-        <h5>{item.price}</h5>
-           
-        
+        <>        
+        <CardColumns>
+  <Card>
+    <Card.Body>
+      <Card.Title><h1>{item.title}</h1>
+      </Card.Title>
+      <Card.Subtitle>{item.category}</Card.Subtitle>
+    <Card.Img variant="top" src={item.image} style={{width:'20%', margin: 'auto', display:'block'}} />
+      <Card.Text>ID: {item.id}</Card.Text>
+      <Card.Text>
+      {item.description}
+      </Card.Text>
+      <h5>$ {item.price}</h5>  
+    </Card.Body>
+  </Card>
+</CardColumns>
         </>
     )
 }
