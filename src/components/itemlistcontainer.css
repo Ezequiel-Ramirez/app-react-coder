@@ -1,10 +1,9 @@
 p{
     color: black;
 }
-a{
-    text-decoration: none;
-    color: azure;
-}
-a:hover{
-    color: rgb(110, 110, 110);
+.titulo-primario{
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+    text-shadow: 3px 3px 3px;
 }

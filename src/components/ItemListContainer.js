@@ -34,9 +34,8 @@ const ItemListContainer = ({greeting}) =>{
 
     return(
 <>
-    <h1 style={{color:'red'}}>Hola!! {greeting}</h1>
-    <p>Esta es nuestra tienda donde encontrara diferentes productos para su casa</p>
-    <ItemList productos={productos}/>
+    <h1 className="titulo-primario" >{greeting}</h1>
+    <ItemList productos={productos} />
     <ItemCount stock={10} initial={1} onAdd={onAdd}/>
 </>
     )

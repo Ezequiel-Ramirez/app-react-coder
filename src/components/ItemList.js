@@ -10,10 +10,10 @@ const ItemList = ({ productos }) => {
     return (
 
 
-        <Container fluid>
+        <Container fluid >
             <Row>
-
                 {productos.map(product => { return <Item product={product} key={product.id} /> })}
+       
 
             </Row>
         </Container>

@@ -12,7 +12,7 @@ const ItemDetail = ({ item }) => {
                         <Card.Title><h1>{item.title}</h1>
                         </Card.Title>
                         <Card.Subtitle>{item.category}</Card.Subtitle>
-                        <Card.Img variant="top" src={item.image} style={{ width: '20%', margin: 'auto', display: 'block' }} />
+                        <Card.Img variant="top" src={item.picturUrl} style={{ width: '20%', margin: 'auto', display: 'block' }} />
                         <Card.Text>ID: {item.id}</Card.Text>
                         <Card.Text>
                             {item.description}

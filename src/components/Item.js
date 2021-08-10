@@ -2,12 +2,9 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const Item = ({ product }) => {
-
-
-
-
     return (
         <>
             <Col md= "4">
@@ -21,7 +18,8 @@ const Item = ({ product }) => {
                         <Card.Text style={{ color: 'green' }}>
                             {product.price}
                         </Card.Text>
-                        <Button variant="primary">Ver Detalle</Button>
+                        <LinkContainer to={`/item/${product.id}`}><Button variant="primary">Ver Detalle</Button></LinkContainer>
+                        
                     </Card.Body>
                 </Card>
             </Col>
