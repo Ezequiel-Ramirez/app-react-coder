@@ -3,7 +3,7 @@ import CardColumns from 'react-bootstrap/CardColumns'
 import Card from 'react-bootstrap/Card'
 
 
-const ItemDetail = ({ item }) => {
+const ItemDetail = ( {item} ) => {
     return (
         <>
             <CardColumns>

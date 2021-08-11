@@ -30,7 +30,7 @@ const ItemListContainer = ({greeting}) =>{
     promesa.then((prod)=>{
         setProductos(prod)
     })
-    },)
+    },[params.id])
 
     return(
 <>

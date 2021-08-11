@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
         const getItem = new Promise((res, rej) => {
             setTimeout(() => {
                 if (params.id) {
-                    res(prod.filter(producto=>producto.id === params.id))
+                    res(prod.find(producto=>producto.id === params.id))
                 } else {
                     
                     res(console.log("Producto no encontrado"))
@@ -23,7 +23,7 @@ const ItemDetailContainer = () => {
         getItem.then((data_product) => {
             setProducto(data_product)
         })
-    }, [])
+    }, [params.id])
     console.log(producto)
 
     return (
