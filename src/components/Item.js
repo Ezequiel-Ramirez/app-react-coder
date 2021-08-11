@@ -12,7 +12,7 @@ const Item = ({ product }) => {
                 <Card  className="text-center mt-3">
                     <Card.Img variant="top" src={product.picturUrl} />
                     <Card.Body>
-                        <Card.Title>{product.title}</Card.Title>
+                        <Card.Title className="fs-2">{product.title}</Card.Title>
                         <Card.Text className="cardText" >
                             {product.description}
                         </Card.Text>
