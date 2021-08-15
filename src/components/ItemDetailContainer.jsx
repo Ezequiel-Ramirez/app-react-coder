@@ -29,14 +29,14 @@ const ItemDetailContainer = () => {
     }, [params.id])
     console.log(producto)
     if (estado === "pendiente") {
-        return(
+        return (
 
-        <div>
-            <h3>Detalle de Producto:</h3>
-            <Spinner animation="border" role="status" className="d-block m-auto" >
-                <span className="visually-hidden">Loading...</span>
-            </Spinner>
-        </div>
+            <div>
+                <h3>Detalle de Producto:</h3>
+                <Spinner animation="border" role="status" className="d-block m-auto" >
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
         )
     } else {
 

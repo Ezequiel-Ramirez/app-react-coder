@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from "react";
-
-import {prod} from "./productos"
+import React, { useEffect, useState } from "react";
+import { prod } from "./productos"
 import ItemList from "./ItemList"
 import { useParams } from "react-router";
 import Spinner from 'react-bootstrap/Spinner'
 import "./itemlistcontainer.css"
 
 
-const ItemListContainer = ({greeting}) =>{
-   
+const ItemListContainer = ({ greeting }) => {
+
 
     const [productos, setProductos] = useState([])
     const [estado, setEstado] = useState("pendiente");
@@ -17,38 +16,38 @@ const ItemListContainer = ({greeting}) =>{
     console.log(params)
 
     useEffect(() => {
-        const promesa = new Promise((resolve)=>{
-        setTimeout(()=>{
-            if (params.id) {
-                resolve(prod.filter(producto=>producto.categoria === params.id))
-            } else {
-                
-                resolve(prod)
-            }
-        },2000)
-        setEstado("pendiente")
-    })
-    promesa.then((prod)=> setProductos(prod) )
+        const promesa = new Promise((resolve) => {
+            setTimeout(() => {
+                if (params.id) {
+                    resolve(prod.filter(producto => producto.categoria === params.id))
+                } else {
+
+                    resolve(prod)
+                }
+            }, 2000)
+            setEstado("pendiente")
+        })
+        promesa.then((prod) => setProductos(prod))
             .then(() => setEstado("terminado"))
-    },[params.id])
+    }, [params.id])
     if (estado === "pendiente") {
-        return(
+        return (
             <>
                 <h1 className="titulo-primario" >{greeting}</h1>
                 <Spinner animation="border" role="status" className="d-block m-auto" >
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
             </>
-                )
+        )
     } else {
-        
-        return(
-    <>
-        <h1 className="titulo-primario" >{greeting}</h1>
-        <h2>Listado de Nuestros Productos:</h2>
-        <ItemList productos={productos} />
-        
-    </>
+
+        return (
+            <>
+                <h1 className="titulo-primario" >{greeting}</h1>
+                <h2>Listado de Nuestros Productos:</h2>
+                <ItemList productos={productos} />
+
+            </>
         )
     }
 

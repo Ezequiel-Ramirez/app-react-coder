@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CardColumns from 'react-bootstrap/CardColumns'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import "./itemdetail.css"
 import ItemCount from "./ItemCount"
-import { useState } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 
 const ItemDetail = ({item}) => {
