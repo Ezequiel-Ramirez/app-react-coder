@@ -5,9 +5,11 @@ import { useParams } from "react-router";
 import { prod } from "./productos"
 
 const ItemDetailContainer = () => {
-
+    /* estado de los productos a mostrar que inicia vacío */
     const [producto, setProducto] = useState([])
+    /* estado para mostrar el loading */
     const [estado, setEstado] = useState("pendiente");
+    /* parametro que recibe al renderizar el contenido */
     const params = useParams()
     console.log(params)
 
@@ -15,9 +17,10 @@ const ItemDetailContainer = () => {
         const getItem = new Promise((res, rej) => {
             setTimeout(() => {
                 if (params.id) {
+                    /* si recibe un parametro me lo busca por id string */
                     res(prod.find(producto => producto.id === params.id))
                 } else {
-
+                    /* en caso que no encuentre el id en el listado */
                     res(console.log("Producto no encontrado"))
                 }
             }, 2000)
@@ -25,12 +28,13 @@ const ItemDetailContainer = () => {
         })
         getItem.then((data_product) =>
             setProducto(data_product))
+            /* actualizo el estado del loading */
             .then(() => setEstado("terminado"))
     }, [params.id])
     console.log(producto)
     if (estado === "pendiente") {
         return (
-
+            /* muestro el producto segun el estado */
             <div>
                 <h3>Detalle de Producto:</h3>
                 <Spinner animation="border" role="status" className="d-block m-auto" >

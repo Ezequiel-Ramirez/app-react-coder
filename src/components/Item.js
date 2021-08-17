@@ -4,7 +4,11 @@ import Col from 'react-bootstrap/Col'
 import { LinkContainer } from 'react-router-bootstrap'
 import "./item.css"
 
+
 const Item = ({ product }) => {
+   
+
+   
     return (
         <>
             <Col md= "4">
