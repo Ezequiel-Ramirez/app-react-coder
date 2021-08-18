@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import ItemCart from "./ItemCart";
 import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom";
+import "./cart.css"
 
 
 const Cart = () => {
@@ -18,11 +19,11 @@ const Cart = () => {
 
             </ul>
             {carrito.length > 0 ?
-                <div className="total"><div className="importe__total"><p>Total de Carrito: $<span> {precioTotal}</span></p></div></div>
+                <div className="total"><div className="importe__total"><p>Total a Pagar: $<span> {precioTotal}</span></p></div></div>
                 : null
             }
             {carrito.length > 0 ? <Button variant="danger" className="mt-5" onClick={clear}>Limpiar Carrito</Button> : null}
-            {carrito.length > 0 ? <Link to={`/`}> <Button variant="success" className="mt-5" onClick={clear}>Seguir Comprando</Button> </Link> : null}
+            {carrito.length > 0 ? <Link to={`/`}> <Button variant="success" className="mt-5" >Seguir Comprando</Button> </Link> : null}
 
 
         </Container>

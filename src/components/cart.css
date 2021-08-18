@@ -1,0 +1,8 @@
+.importe__total{
+    display: block;
+    margin: auto;
+    width: 50%;
+    font-size: 25px;
+    border: 2px solid black;
+    text-align: center;
+}

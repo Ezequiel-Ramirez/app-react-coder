@@ -12,17 +12,14 @@ const ItemDetail = ({ item }) => {
     const [unidades, setUnidades] = useState()
 
 
-    const { carrito, addItem, calcularTotal } = useContext(contexto);
+    const { carrito, addItem } = useContext(contexto);
     let cantidad;
     let yaExiste = carrito.find((producto) => producto.id === item.id);
     if (yaExiste) {
-        cantidad = parseInt(carrito.filter((producto) => producto.id === item.id).map((producto) => producto.cantidad));
-        calcularTotal();
+        cantidad = parseInt(carrito.filter((producto) => producto.id === item.id).map((producto) => producto.cantidad));      
         //console.log(`esto es itemdetail, ${producto.nombre} ya está en el carrito y su cantidad es ${cantidad}`);
-
     } else {
-        cantidad = parseInt(item.cantidad);
-        calcularTotal();
+        cantidad = parseInt(item.cantidad);      
         //console.log(`esto es itemdetail, la cantidad de ${producto.nombre} es ${cantidad} pero aun no se argegó al carrito`);
     }
     /* funcion donde actualizo las unidades */
@@ -32,6 +29,8 @@ const ItemDetail = ({ item }) => {
         console.log(cantidad)
         setUnidades(cantidad)
         console.log(unidades)
+
+        
     }
     console.log(carrito);
     if (unidades > 0) {
