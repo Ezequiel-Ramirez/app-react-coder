@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Provider } from "../contexto"
 
 
 const CartContext = ({ children }) => {
 
     const [carrito, setCarrito] = useState([])
+    const [precioTotal, setPrecioTotal] = useState(0);
+
+    useEffect( () => {
+        const total = Object.values(carrito).reduce( (acumulador, {cantidad, precio}) => acumulador + cantidad * precio, 0);
+        setPrecioTotal(total);
+    }, [carrito, precioTotal]);
 
     function addItem(producto, nuevaCantidad) {
         let yaExiste = carrito.find((item) => item.id === producto.id);
@@ -36,7 +42,7 @@ const CartContext = ({ children }) => {
     }
 
     return (
-        <Provider value={{ carrito, setCarrito, addItem, removeItem, clear }}>
+        <Provider value={{ carrito, setCarrito, addItem, removeItem, clear, precioTotal, setPrecioTotal }}>
             {children}
         </Provider>
     )
