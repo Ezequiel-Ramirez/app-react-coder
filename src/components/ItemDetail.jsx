@@ -10,9 +10,9 @@ import contexto from "../contexto"
 const ItemDetail = ({ item }) => {
     /* estado de las unidades del carro */
     const [unidades, setUnidades] = useState()
-
-
     const { carrito, addItem } = useContext(contexto);
+
+
     let cantidad;
     let yaExiste = carrito.find((producto) => producto.id === item.id);
     if (yaExiste) {
@@ -29,8 +29,14 @@ const ItemDetail = ({ item }) => {
         console.log(cantidad)
         setUnidades(cantidad)
         console.log(unidades)
+        /* 
+        const item_para_agregar = {
+            item : item,
+            quantity : cantidad
+        }
+        addItem(item_para_agregar)
+        */
 
-        
     }
     console.log(carrito);
     if (unidades > 0) {

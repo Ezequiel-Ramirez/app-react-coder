@@ -7,6 +7,7 @@ const ItemCart = ({ product }) => {
     const { removeItem, calcularTotal } = useContext(contexto);
     let subtotal = product.price * product.cantidad;
     calcularTotal();
+    
 
     return (
         <li className="listaCarro">

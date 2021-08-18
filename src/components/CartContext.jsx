@@ -6,7 +6,7 @@ const CartContext = ({ children }) => {
 
     const [carrito, setCarrito] = useState([])
     const [precioTotal, setPrecioTotal] = useState(0);
-    const [cantidadTotal, setCantidadTotal] = useState(0);
+   
 
     function addItem(producto, nuevaCantidad) {
         let yaExiste = carrito.find((item) => item.id === producto.id);
@@ -38,18 +38,12 @@ const CartContext = ({ children }) => {
     const calcularTotal = () =>{  
        const total = Object.values(carrito).reduce( (acumulador, {cantidad, price}) => acumulador + cantidad * price, 0);
         setPrecioTotal(total);
+        
     }
 
-    const calcularCantidad = () =>{
-        const unidades = [carrito
-            .map(obj => obj.cantidades)
-            .reduce((prev, curr) => {
-              return prev + curr
-            })];
-            setCantidadTotal(unidades)
-    }
+    
     return (
-        <Provider value={{ carrito, setCarrito, addItem, removeItem, clear, precioTotal, setPrecioTotal, calcularTotal, calcularCantidad, cantidadTotal }}>
+        <Provider value={{ carrito, setCarrito, addItem, removeItem, clear, precioTotal, setPrecioTotal, calcularTotal }}>
             {children}
         </Provider>
     )
