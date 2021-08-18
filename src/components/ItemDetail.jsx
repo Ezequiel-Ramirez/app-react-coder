@@ -12,7 +12,7 @@ const ItemDetail = ({ item }) => {
     const [unidades, setUnidades] = useState()
 
 
-    const { carrito, addItem,  calcularTotal  } = useContext(contexto);
+    const { carrito, addItem, calcularTotal } = useContext(contexto);
     let cantidad;
     let yaExiste = carrito.find((producto) => producto.id === item.id);
     if (yaExiste) {

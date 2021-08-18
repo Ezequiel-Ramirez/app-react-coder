@@ -34,9 +34,9 @@ const CartContext = ({ children }) => {
     const clear = () => {
         setCarrito([])
     }
-    const calcularTotal = () =>{
+    const calcularTotal = () => {
         let total = "";
-        total = Object.values(carrito).reduce( (acumulador, {cantidad, price}) => acumulador + cantidad * price, 0);
+        total = Object.values(carrito).reduce((acumulador, { cantidad, price }) => acumulador + cantidad * price, 0);
         setPrecioTotal(total);
     }
     return (
