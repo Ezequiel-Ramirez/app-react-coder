@@ -23,9 +23,11 @@ const NavBar = () =>
           </Nav>
           <Nav>
             <CartWidget />
+          <LinkContainer to="./Cart">
             <Nav.Link eventKey={2} href="#memes">
               Carrito
             </Nav.Link>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 
 const Cart = () => {
-    const { carrito, clear, precioTotal } = useContext(contexto);
+    const { carrito, clear, precioTotal} = useContext(contexto);
 
     console.log(carrito)
     return (
@@ -22,6 +22,7 @@ const Cart = () => {
             : null
             }
             { carrito.length > 0 ? <Button variant="danger" className="mt-5" onClick={clear}>Limpiar Carrito</Button> : null } 
+            { carrito.length > 0 ?<Link to={`/`}> <Button variant="success" className="mt-5" onClick={clear}>Seguir Comprando</Button> </Link>: null } 
             
 
         </Container>
