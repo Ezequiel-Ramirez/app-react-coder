@@ -6,6 +6,7 @@ const CartContext = ({ children }) => {
 
     const [carrito, setCarrito] = useState([])
     const [precioTotal, setPrecioTotal] = useState(0);
+    const [badge, setBadge] = useState("");
    
 
     function addItem(producto, nuevaCantidad) {
@@ -25,6 +26,7 @@ const CartContext = ({ children }) => {
         } else {
             setCarrito([...carrito, { ...producto, cantidad: nuevaCantidad }]);
         }
+        /* setBadge(carrito.length) */
     }
 
     const removeItem = (id) => {
@@ -37,13 +39,13 @@ const CartContext = ({ children }) => {
     }
     const calcularTotal = () =>{  
        const total = Object.values(carrito).reduce( (acumulador, {cantidad, price}) => acumulador + cantidad * price, 0);
-        setPrecioTotal(total);
-        
+        setPrecioTotal(total); 
+        setBadge(carrito.length);       
     }
 
     
     return (
-        <Provider value={{ carrito, setCarrito, addItem, removeItem, clear, precioTotal, setPrecioTotal, calcularTotal }}>
+        <Provider value={{ carrito, setCarrito, addItem, removeItem, clear, precioTotal, setPrecioTotal, calcularTotal, badge }}>
             {children}
         </Provider>
     )
