@@ -29,14 +29,7 @@ const ItemDetail = ({ item }) => {
         console.log(cantidad)
         setUnidades(cantidad)
         console.log(unidades)
-        /* 
-        const item_para_agregar = {
-            item : item,
-            quantity : cantidad
-        }
-        addItem(item_para_agregar)
-        */
-
+       
     }
     console.log(carrito);
     if (unidades > 0) {

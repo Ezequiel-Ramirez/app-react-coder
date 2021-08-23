@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { prod } from "./productos"
+/* import { prod } from "./productos" */
 import ItemList from "./ItemList"
 import { useParams } from "react-router";
 import Spinner from 'react-bootstrap/Spinner'
 import "./itemlistcontainer.css"
+import { firestore } from "../firebase";
 
 
 const ItemListContainer = ({ greeting }) => {
@@ -15,29 +16,68 @@ const ItemListContainer = ({ greeting }) => {
     /* parametro que recibe al renderizar el contenido */
     const params = useParams()
 
-    console.log(params)
+    console.log(typeof params)
 
     useEffect(() => {
-        const promesa = new Promise((resolve) => {
-            setTimeout(() => {
-                if (params.id) {
-                    /* si recibe un parametro me lo filtra */
-                    resolve(prod.filter(producto => producto.categoria === params.id))
-                } else {
-                    /* si no recibe un parametro entonces me muestra todos los productos */
-                    resolve(prod)
-                }
-            }, 2000)
-            setEstado("pendiente")
-        })
-        /* actualizo el estado del loading */
-        promesa.then((prod) => setProductos(prod))
-            .then(() => setEstado("terminado"))
+        //Referencia a la DB
+        const db = firestore
+        //Referencia a una coleccion
+        const collection = db.collection("items")
+
+        if (params.id) {
+            const filtro = collection.where("categoryId", "==", parseInt(params.id))
+            const query = filtro.get()
+            console.log(query)
+            query.then((resultados) => {
+                console.log(resultados)
+               
+                setProductos(resultados.docs.map(doc => doc.data()))
+                
+                setEstado("terminado")
+            })
+
+        } else {
+            //Este es mi query
+            const query = collection.get()
+            console.log(query)
+            query.then((resultados) => {
+                console.log(resultados)
+                const resultados_parseado = []
+
+                //Recorro cada uno de los documentos
+                resultados.forEach((documento) => {
+                    //el id esta separado del resto de la data
+                    const id = documento.id
+                    const data = documento.data()
+                    const data_final = { id, ...data }
+                    resultados_parseado.push(data_final)
+                })
+                setProductos(resultados_parseado)
+                setEstado("terminado")
+            })
+
+        }
+
+        /*  const promesa = new Promise((resolve) => {
+             setTimeout(() => {
+                 if (params.id) {
+                     
+                     resolve(prod.filter(producto => producto.categoria === params.id))
+                 } else {
+                    
+                     resolve(prod)
+                 }
+             }, 2000)
+             setEstado("pendiente")
+         })
+        
+         promesa.then((prod) => setProductos(prod))
+             .then(() => setEstado("terminado")) */
     }, [params.id])
     if (estado === "pendiente") {
         return (
             <>
-                {/* muestro el loading segun estado */}
+
                 <h1 className="titulo-primario" >{greeting}</h1>
                 <Spinner animation="border" role="status" className="d-block m-auto" >
                     <span className="visually-hidden">Loading...</span>
@@ -48,7 +88,7 @@ const ItemListContainer = ({ greeting }) => {
 
         return (
             <>
-                {/* oculto el loading segun el estado */}
+
                 <h1 className="titulo-primario" >{greeting}</h1>
                 <h2>Listado de Nuestros Productos:</h2>
                 <ItemList productos={productos} />
