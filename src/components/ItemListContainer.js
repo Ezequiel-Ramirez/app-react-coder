@@ -25,15 +25,24 @@ const ItemListContainer = ({ greeting }) => {
         const collection = db.collection("items")
 
         if (params.id) {
-            const filtro = collection.where("categoryId", "==", parseInt(params.id))
+            const filtro = collection.where("categoryId", "==", params.id)
             const query = filtro.get()
             console.log(query)
             query.then((resultados) => {
                 console.log(resultados)
-               
-                setProductos(resultados.docs.map(doc => doc.data()))
-                
+                const resultados_parseado = []
+
+                //Recorro cada uno de los documentos
+                resultados.forEach((documento) => {
+                    //el id esta separado del resto de la data
+                    const id = documento.id
+                    const data = documento.data()
+                    const data_final = { id, ...data }
+                    resultados_parseado.push(data_final)
+                })
+                setProductos(resultados_parseado)
                 setEstado("terminado")
+
             })
 
         } else {
@@ -58,21 +67,7 @@ const ItemListContainer = ({ greeting }) => {
 
         }
 
-        /*  const promesa = new Promise((resolve) => {
-             setTimeout(() => {
-                 if (params.id) {
-                     
-                     resolve(prod.filter(producto => producto.categoria === params.id))
-                 } else {
-                    
-                     resolve(prod)
-                 }
-             }, 2000)
-             setEstado("pendiente")
-         })
-        
-         promesa.then((prod) => setProductos(prod))
-             .then(() => setEstado("terminado")) */
+
     }, [params.id])
     if (estado === "pendiente") {
         return (

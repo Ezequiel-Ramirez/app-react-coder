@@ -16,11 +16,11 @@ const ItemDetail = ({ item }) => {
     let cantidad;
     let yaExiste = carrito.find((producto) => producto.id === item.id);
     if (yaExiste) {
-        cantidad = parseInt(carrito.filter((producto) => producto.id === item.id).map((producto) => producto.cantidad));      
-        //console.log(`esto es itemdetail, ${producto.nombre} ya está en el carrito y su cantidad es ${cantidad}`);
+        cantidad = parseInt(carrito.filter((producto) => producto.id === item.id).map((producto) => producto.cantidad));
+
     } else {
-        cantidad = parseInt(item.cantidad);      
-        //console.log(`esto es itemdetail, la cantidad de ${producto.nombre} es ${cantidad} pero aun no se argegó al carrito`);
+        cantidad = parseInt(item.cantidad);
+
     }
     /* funcion donde actualizo las unidades */
     const onAdd = (cantidad) => {
@@ -29,7 +29,7 @@ const ItemDetail = ({ item }) => {
         console.log(cantidad)
         setUnidades(cantidad)
         console.log(unidades)
-       
+
     }
     console.log(carrito);
     if (unidades > 0) {
@@ -40,14 +40,14 @@ const ItemDetail = ({ item }) => {
                         <Card.Body>
                             <Card.Title><h1>{item.title}</h1>
                             </Card.Title>
-                            <Card.Subtitle>{item.category}</Card.Subtitle>
-                            <Card.Img className="cardImg" variant="top" src={item.picturUrl} />
+                            <Card.Subtitle>{item.categoryId}</Card.Subtitle>
+                            <Card.Img className="cardImg" variant="top" src={item.image} />
                             <Card.Text>ID: {item.id}</Card.Text>
                             <Card.Text>
                                 {item.description}
                             </Card.Text>
                             <h5>$ {item.price}</h5>
-                            {/* actualizo el estado del unidades y muestro el boton terminar compra */}
+
                             <ItemCount stock={item.stock} cantidad={cantidad} addItem={() => addItem(item, unidades)} initial={item.stock >= 1 ? 1 : 0} onAdd={onAdd} />
                             <LinkContainer to="/cart"><Button onClick={() => addItem(item, unidades)}>Terminar mi Compra</Button></LinkContainer>
 

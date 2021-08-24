@@ -21,34 +21,34 @@ const ItemDetailContainer = () => {
         const collection = db.collection("items")
 
         if (params.id) {
-            const filtro = collection.doc("id", "==", params.id)
+            const filtro = collection.doc(params.id)
+            console.log(filtro)
             const query = filtro.get()
             console.log(query)
             query.then((resultados) => {
                 console.log(resultados)
-                const resultados_parseado = []
+
                 //el id esta separado del resto de la data
                 const id = resultados.id
                 const data = resultados.data()
-                const data_final = {id, ...data}
-                resultados_parseado.push(data_final)
-
-                setProducto(resultados_parseado)
+                console.log(data)
+                const data_final = { id, ...data }
+                setProducto(data_final)
                 setEstado("terminado")
             })
 
         } else {
-            
+
             console.log("Producto no encontrado")
             setEstado("terminado")
 
         }
 
-      
+
     }, [params.id])
     console.log(producto)
 
-    
+
     if (estado === "pendiente") {
         return (
 
