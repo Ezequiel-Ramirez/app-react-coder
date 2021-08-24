@@ -34,14 +34,16 @@ const ItemDetailContainer = () => {
                 console.log(data)
                 const data_final = { id, ...data }
                 setProducto(data_final)
-                setEstado("terminado")
-            })
+            }).catch((error) => {
+                console.log(error);
+                console.log("Error al cargar los productos, intentá nuevamente");
+            }).finally(() => {
+                setEstado("terminado");
+            });
 
         } else {
-
             console.log("Producto no encontrado")
             setEstado("terminado")
-
         }
 
 

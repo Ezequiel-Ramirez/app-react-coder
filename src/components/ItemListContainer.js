@@ -31,7 +31,6 @@ const ItemListContainer = ({ greeting }) => {
             query.then((resultados) => {
                 console.log(resultados)
                 const resultados_parseado = []
-
                 //Recorro cada uno de los documentos
                 resultados.forEach((documento) => {
                     //el id esta separado del resto de la data
@@ -41,9 +40,12 @@ const ItemListContainer = ({ greeting }) => {
                     resultados_parseado.push(data_final)
                 })
                 setProductos(resultados_parseado)
-                setEstado("terminado")
-
-            })
+            }).catch((error) => {
+                console.log(error);
+                console.log("Error al cargar los productos, intentá nuevamente");
+            }).finally(() => {
+                setEstado("terminado");
+            });
 
         } else {
             //Este es mi query
@@ -52,7 +54,6 @@ const ItemListContainer = ({ greeting }) => {
             query.then((resultados) => {
                 console.log(resultados)
                 const resultados_parseado = []
-
                 //Recorro cada uno de los documentos
                 resultados.forEach((documento) => {
                     //el id esta separado del resto de la data
@@ -62,8 +63,12 @@ const ItemListContainer = ({ greeting }) => {
                     resultados_parseado.push(data_final)
                 })
                 setProductos(resultados_parseado)
-                setEstado("terminado")
-            })
+            }).catch((error) => {
+                console.log(error);
+                console.log("Error al cargar los productos, intentá nuevamente");
+            }).finally(() => {
+                setEstado("terminado");
+            });
 
         }
 
@@ -72,7 +77,6 @@ const ItemListContainer = ({ greeting }) => {
     if (estado === "pendiente") {
         return (
             <>
-
                 <h1 className="titulo-primario" >{greeting}</h1>
                 <Spinner animation="border" role="status" className="d-block m-auto" >
                     <span className="visually-hidden">Loading...</span>
@@ -83,11 +87,9 @@ const ItemListContainer = ({ greeting }) => {
 
         return (
             <>
-
                 <h1 className="titulo-primario" >{greeting}</h1>
                 <h2>Listado de Nuestros Productos:</h2>
                 <ItemList productos={productos} />
-
             </>
         )
     }
