@@ -49,7 +49,7 @@ const ItemDetail = ({ item }) => {
                             <h5>$ {item.price}</h5>
 
                             <ItemCount stock={item.stock} cantidad={cantidad} addItem={() => addItem(item, unidades)} initial={item.stock >= 1 ? 1 : 0} onAdd={onAdd} />
-                            <LinkContainer to="/cart"><Button onClick={() => addItem(item, unidades)}>Terminar mi Compra</Button></LinkContainer>
+                            <LinkContainer to="/cart"><Button onClick={() => addItem(item, unidades)}>Agregar al Carrito</Button></LinkContainer>
 
                         </Card.Body>
                     </Card>

@@ -3,9 +3,11 @@ import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Cart from "./components/Cart"
+import Formulario from "./components/Formulario"
 //bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import CartContext from "./components/CartContext";
+
 
 const App = () => {
   return (
@@ -30,6 +32,9 @@ const App = () => {
           </Route>
           <Route path="/cart">
             <Cart></Cart>
+          </Route>
+          <Route path="/formulario">
+            <Formulario></Formulario>
           </Route>
         </Switch>
       </BrowserRouter>

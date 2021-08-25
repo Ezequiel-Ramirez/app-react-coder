@@ -7,6 +7,9 @@ const CartContext = ({ children }) => {
     const [carrito, setCarrito] = useState([])
     const [precioTotal, setPrecioTotal] = useState(0);
     const [badge, setBadge] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [telefono, setTelefono] = useState("");
+    const [email, setEmail] = useState("");
    
 
     function addItem(producto, nuevaCantidad) {
@@ -45,7 +48,7 @@ const CartContext = ({ children }) => {
 
     
     return (
-        <Provider value={{ carrito, setCarrito, addItem, removeItem, clear, precioTotal, setPrecioTotal, calcularTotal, badge }}>
+        <Provider value={{ carrito, setCarrito, addItem, removeItem, clear, precioTotal, setPrecioTotal, calcularTotal, badge, nombre, setNombre, telefono, setTelefono, email, setEmail }}>
             {children}
         </Provider>
     )
