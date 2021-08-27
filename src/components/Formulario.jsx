@@ -31,7 +31,22 @@ const Formulario = () => {
         setEmail(e.target.value)
         console.log(email);
     }
-
+    const validarCampos = () => {
+        if (nombre.trim().length && telefono.trim().length && email.trim().length) {
+            return true
+        } else {
+            return false
+        }
+    }
+    async function upToDayStock () {
+        const itemsToUpdate = db.collection("items").where(firebase.firestore.FieldPath.documentId(), 'in', carrito.map(i => i.id));
+        const query = await itemsToUpdate.get();
+        const batch = db.batch();
+        query.docs.forEach((itemActualizable, itemid) => {
+            batch.update(itemActualizable.ref, {stock: itemActualizable.data().stock - carrito[itemid].cantidad}); 
+        })
+        await batch.commit().then(r=>r);
+    }
     const realizarPedido = (e) => {
         e.preventDefault();
         if (validarCampos()) {
@@ -41,13 +56,12 @@ const Formulario = () => {
                 fecha: firebase.firestore.Timestamp.fromDate(new Date()),
                 total: precioTotal,
             };
-
             orders.add(newOrder).then(({ id }) => {
                 setOrderId(id); // succes
                 console.log(orderId);
                 setError(false)
                 setProcesado(true)
-                clear();
+                clear();                
             }).catch(error => {
                 setError(error); // error
             }).finally(() => {
@@ -55,22 +69,12 @@ const Formulario = () => {
                 setEmail("");
                 setNombre("");
                 setTelefono("");
-            })
+                upToDayStock();
+            });
         } else {
             setError(true)          
         }
-
     }
-
-    const validarCampos = () => {
-        if (nombre.trim().length && telefono.trim().length && email.trim().length) {
-            return true
-        } else {
-            return false
-        }
-    }
-
-
 
     return (
         <div className="container">
@@ -93,13 +97,13 @@ const Formulario = () => {
                 {
                     procesado ?
                         <div className="col-md-6">
-
                             <h3>Su compra ha sido procesada por un total de $ {precioTotal}</h3>
-
-
                             <h4 className="orden">Número de orden: <span> {orderId}</span></h4>
                         </div>
-                        : null
+                        :
+                        <div className="col-md-6">  
+                        <h3>Complete los datos para proceder con su orden por favor...</h3>
+                        </div>
                 }
             </div>
         </div>

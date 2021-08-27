@@ -14,8 +14,8 @@ const ItemDetail = ({ item }) => {
 
 
     let cantidad;
-    let yaExiste = carrito.find((producto) => producto.id === item.id);
-    if (yaExiste) {
+    let isInCart = carrito.find((producto) => producto.id === item.id);
+    if (isInCart) {
         cantidad = parseInt(carrito.filter((producto) => producto.id === item.id).map((producto) => producto.cantidad));
 
     } else {
