@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import contexto from "../contexto"
 import "./itemCart.css"
 
@@ -6,7 +6,10 @@ import "./itemCart.css"
 const ItemCart = ({ product }) => {
     const { removeItem, calcularTotal } = useContext(contexto);
     let subtotal = product.price * product.cantidad;
-    calcularTotal();
+    useEffect(() => {
+        calcularTotal();
+    }, [calcularTotal])
+   
 
 
     return (

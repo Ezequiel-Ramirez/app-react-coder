@@ -1,0 +1,28 @@
+.formCart{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.formCart label{
+    font-size: 2em;
+}
+.formCart input{
+    margin-bottom: 10px;
+}
+.formCart button{
+    height: 50px;
+    font-size: 1.5em;
+    margin-top: 10px;
+    background-color: limegreen;
+    border-radius: 10px;
+}
+.orden, .msjError{
+    border: 2px dashed red;
+    padding: 5px;
+}
+.msjError{
+    text-align: center;
+}
+.orden span{
+    background-color: lightcoral;
+}
