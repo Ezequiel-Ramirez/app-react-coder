@@ -12,7 +12,14 @@ const NavBar = () =>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark"  >
       <Container >
         <LinkContainer to="/">
-          <Navbar.Brand >Center Bike</Navbar.Brand>
+          <Navbar.Brand >
+          <img
+        src="/img/logo.png"
+        width="150"
+        height="50"
+        className="d-inline-block align-top"
+        alt="logo"
+      /></Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

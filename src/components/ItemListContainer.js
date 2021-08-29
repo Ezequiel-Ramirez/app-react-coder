@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-/* import { prod } from "./productos" */
 import ItemList from "./ItemList"
 import { useParams } from "react-router";
 import Spinner from 'react-bootstrap/Spinner'
@@ -87,12 +86,12 @@ const ItemListContainer = ({ greeting }) => {
 
         return (
             <>
-                <h1 className="titulo-primario" >{greeting}</h1>
-                <h2>Listado de Nuestros Productos:</h2>
+                <svg>
+                    <text x="5%" y="85%" className="titulo-primario" >{greeting}</text>
+                </svg>
                 <ItemList productos={productos} />
             </>
         )
     }
-
 }
 export default ItemListContainer

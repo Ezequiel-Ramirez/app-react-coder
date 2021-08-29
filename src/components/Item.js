@@ -13,7 +13,7 @@ const Item = ({ product }) => {
         <>
             <Col md= "4">
                 <Card  className="text-center mt-3">
-                    <Card.Img variant="top" src={product.image} />
+                    <Card.Img variant="top" src={product.image}  />
                     <Card.Body>
                         <Card.Title className="fs-2">{product.title}</Card.Title>
                         <Card.Text className="cardText" >
