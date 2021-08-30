@@ -26,6 +26,7 @@ const Formulario = () => {
     const guardarEmail = (e) => {
         setEmail(e.target.value)
     }
+    
     const validarCampos = () => {
         if (nombre.trim().length && telefono.trim().length && email.trim().length) {
             return true
@@ -42,6 +43,7 @@ const Formulario = () => {
         })
         await batch.commit().then(r => r);
     }
+
     const realizarPedido = (e) => {
         e.preventDefault();
         if (validarCampos()) {
@@ -76,7 +78,7 @@ const Formulario = () => {
         }, 2000)
     }, [procesado])
 
-
+    
     if (spiner === true) {
         return (
             <>

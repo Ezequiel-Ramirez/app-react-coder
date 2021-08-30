@@ -26,7 +26,7 @@ const NavBar = () =>
           </Nav>
           <Nav>
             <CartWidget />
-            <LinkContainer to="./Cart">
+            <LinkContainer to="/Cart">
               <Nav.Link className="menu fs-3">
                 Carrito
               </Nav.Link>
