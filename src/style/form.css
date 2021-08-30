@@ -23,6 +23,9 @@
 .msjError{
     text-align: center;
 }
+.outLine{
+    border-color: red;
+}
 .orden span{
     background-color: lightcoral;
 }

@@ -14,19 +14,20 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Switch>
-         
-          <Route path="/category/:id">
-            <ItemListContainer greeting="Últimos Ingresos" />
-          </Route>
           <Route path="/" exact>
             <ItemListContainer greeting="Bienvenidos a mi tienda On-Line" />
-          </Route>
-          <Route path="/item/:id">
-            <ItemDetailContainer />
           </Route>
           <Route path="/cart">
             <Cart></Cart>
           </Route>
+          <Route path="/category/:id">
+            <ItemListContainer greeting="Últimos Ingresos" />
+          </Route>
+
+          <Route path="/item/:id">
+            <ItemDetailContainer />
+          </Route>
+
           <Route path="/formulario">
             <Formulario></Formulario>
           </Route>

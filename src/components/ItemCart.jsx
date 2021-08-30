@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import contexto from "../contexto"
-import "./itemCart.css"
+import "../style/itemCart.css"
 
 
 const ItemCart = ({ product }) => {
@@ -9,13 +9,12 @@ const ItemCart = ({ product }) => {
     useEffect(() => {
         calcularTotal();
     }, [calcularTotal])
-   
 
 
     return (
         <li className="listaCarro">
             <img className="imgCarro" src={product.image} alt="{product.title}"></img>
-            <p>Producto: {product.title} - Precio unitario: ${product.price} - Unidades: {product.cantidad} - Precio Total: $ {subtotal}</p>
+            <p>Nombre: {product.title}  -  Precio unitario: ${product.price}  -  Unidades: {product.cantidad}  -  Precio Total: $ {subtotal}</p>
             <button onClick={() => removeItem(product.id)}>X</button>
         </li>
     )

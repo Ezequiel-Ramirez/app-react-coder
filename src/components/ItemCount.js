@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./itemcount.css";
+import "../style/itemcount.css";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
     const [contador, setContador] = useState(initial)
