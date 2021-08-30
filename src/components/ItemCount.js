@@ -28,7 +28,10 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         <div className="divContador">
             <div className="divContadorInternos">
                 <button onClick={restarContador}>-</button>
-                <p>Cantidad: {contador}</p>
+                <p>Cantidad: {contador}
+                    <br></br>
+                    <span>Stock disponible: {stock}</span>
+                </p>
                 <button onClick={sumarContador}>+</button>
             </div>
             <div className="divContadorInternos">

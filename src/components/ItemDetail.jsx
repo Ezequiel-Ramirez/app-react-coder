@@ -6,6 +6,9 @@ import ItemCount from "./ItemCount"
 import { LinkContainer } from 'react-router-bootstrap'
 import contexto from "../contexto"
 import { Col, Container, Row } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStarHalfAlt, faStar} from '@fortawesome/free-solid-svg-icons'
+import "../style/itemdetail.css";
 
 const ItemDetail = ({ item }) => {
     const [unidades, setUnidades] = useState()
@@ -45,7 +48,13 @@ const ItemDetail = ({ item }) => {
                                 <Card.Text className="fs-3">
                                     {item.description}
                                 </Card.Text>
+                                <Card.Subtitle className="mb-2 text-muted">{item.info}</Card.Subtitle>
                                 <h3>$ {item.price}</h3>
+                                <FontAwesomeIcon  icon={faStar}  className="iconoStar"/>
+                                <FontAwesomeIcon  icon={faStar}  className="iconoStar"/>
+                                <FontAwesomeIcon  icon={faStar}  className="iconoStar"/>
+                                <FontAwesomeIcon  icon={faStar}  className="iconoStar"/>
+                                <FontAwesomeIcon  icon={faStarHalfAlt}  className="iconoStar"/>
                                 <ItemCount stock={item.stock} cantidad={cantidad} addItem={() => addItem(item, unidades)} initial={item.stock >= 1 ? 1 : 0} onAdd={onAdd} />
                             </Card.Body>
                             <LinkContainer to="/cart"><Button variant="success" onClick={() => addItem(item, unidades)}>Agregar al Carrito</Button></LinkContainer>
@@ -76,7 +85,13 @@ const ItemDetail = ({ item }) => {
                                 <Card.Text className="fs-3">
                                     {item.description}
                                 </Card.Text>
+                                <Card.Subtitle className="mb-2 text-muted">{item.info}</Card.Subtitle>
                                 <h3>$ {item.price}</h3>
+                                <FontAwesomeIcon  icon={faStar}  className="iconoStar"/>
+                                <FontAwesomeIcon  icon={faStar}  className="iconoStar"/>
+                                <FontAwesomeIcon  icon={faStar}  className="iconoStar"/>
+                                <FontAwesomeIcon  icon={faStar}  className="iconoStar"/>
+                                <FontAwesomeIcon  icon={faStarHalfAlt}  className="iconoStar"/>
                                 <ItemCount stock={item.stock} cantidad={cantidad} addItem={() => addItem(item, unidades)} initial={item.stock >= 1 ? 1 : 0} onAdd={onAdd} />
                             </Card.Body>
                         </Card>

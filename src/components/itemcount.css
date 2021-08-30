@@ -11,8 +11,13 @@
     justify-content: center; 
 }
 .divContadorInternos:first-child p{
+    text-align: center;
     font-weight: bolder;
     font-size: 1.2em;
+}
+.divContadorInternos:first-child p span{
+    font-weight: normal;
+    font-size: 1em;
 }
 .divContadorInternos:first-child button{
     border-radius: 100%;
