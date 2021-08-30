@@ -1,82 +1,88 @@
-import React, { useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import CardColumns from 'react-bootstrap/CardColumns'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import "./itemdetail.css"
 import ItemCount from "./ItemCount"
 import { LinkContainer } from 'react-router-bootstrap'
 import contexto from "../contexto"
+import { Col, Container, Row } from 'react-bootstrap'
 
 const ItemDetail = ({ item }) => {
-    /* estado de las unidades del carro */
     const [unidades, setUnidades] = useState()
     const { carrito, addItem } = useContext(contexto);
-
 
     let cantidad;
     let isInCart = carrito.find((producto) => producto.id === item.id);
     if (isInCart) {
         cantidad = parseInt(carrito.filter((producto) => producto.id === item.id).map((producto) => producto.cantidad));
-
     } else {
         cantidad = parseInt(item.cantidad);
-
     }
-    /* funcion donde actualizo las unidades */
+
     const onAdd = (cantidad) => {
-        console.log("State uplifting")
-        console.log("Recibi la cantidad de un componente hijo")
-        console.log(cantidad)
         setUnidades(cantidad)
-        console.log(unidades)
-
     }
-    console.log(carrito);
+
     if (unidades > 0) {
         return (
-            <>
-                <CardColumns>
-                    <Card>
-                        <Card.Body>
-                            <Card.Title><h1>{item.title}</h1>
-                            </Card.Title>
-                            <Card.Subtitle>{item.categoryId}</Card.Subtitle>
-                            <Card.Img className="cardImg" variant="top" src={item.image} />
-                            <Card.Text>ID: {item.id}</Card.Text>
-                            <Card.Text>
-                                {item.description}
-                            </Card.Text>
-                            <h5>$ {item.price}</h5>
-
-                            <ItemCount stock={item.stock} cantidad={cantidad} addItem={() => addItem(item, unidades)} initial={item.stock >= 1 ? 1 : 0} onAdd={onAdd} />
-                            <LinkContainer to="/cart"><Button onClick={() => addItem(item, unidades)}>Agregar al Carrito</Button></LinkContainer>
-
-                        </Card.Body>
-                    </Card>
-                </CardColumns>
-            </>
+            <Container>
+                <Row>
+                    <Col className="md-8">
+                        <CardColumns>
+                            <Card>
+                                <Card.Body>
+                                    <Card.Title><h1>{item.title}</h1>
+                                    </Card.Title>
+                                    <Card.Img variant="top" src={item.image} />
+                                    <Card.Text>ID: {item.id}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </CardColumns>
+                    </Col>
+                    <Col className="md-4">
+                        <Card>
+                            <Card.Body>
+                                <Card.Text className="fs-3">
+                                    {item.description}
+                                </Card.Text>
+                                <h3>$ {item.price}</h3>
+                                <ItemCount stock={item.stock} cantidad={cantidad} addItem={() => addItem(item, unidades)} initial={item.stock >= 1 ? 1 : 0} onAdd={onAdd} />
+                            </Card.Body>
+                            <LinkContainer to="/cart"><Button variant="success" onClick={() => addItem(item, unidades)}>Agregar al Carrito</Button></LinkContainer>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
         )
     } else {
         return (
-            <>
-                {/* en caso de que no termine la compra no muestro el boton terminar ni actualizo las unidades */}
-                <CardColumns>
-                    <Card>
-                        <Card.Body>
-                            <Card.Title><h1>{item.title}</h1>
-                            </Card.Title>
-                            <Card.Subtitle>{item.category}</Card.Subtitle>
-                            <Card.Img className="cardImg" variant="top" src={item.picturUrl} />
-                            <Card.Text>ID: {item.id}</Card.Text>
-                            <Card.Text>
-                                {item.description}
-                            </Card.Text>
-                            <h5>$ {item.price}</h5>
-                            <ItemCount stock={item.stock} initial={item.stock >= 1 ? 1 : 0} onAdd={onAdd} />
-                        </Card.Body>
-                    </Card>
-                </CardColumns>
-            </>
+            <Container>
+                <Row>
+                    <Col className="md-8">
+                        <CardColumns>
+                            <Card>
+                                <Card.Body>
+                                    <Card.Title><h1>{item.title}</h1>
+                                    </Card.Title>
+                                    <Card.Img variant="top" src={item.image} />
+                                    <Card.Text>ID: {item.id}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </CardColumns>
+                    </Col>
+                    <Col className="md-4">
+                        <Card>
+                            <Card.Body>
+                                <Card.Text className="fs-3">
+                                    {item.description}
+                                </Card.Text>
+                                <h3>$ {item.price}</h3>
+                                <ItemCount stock={item.stock} cantidad={cantidad} addItem={() => addItem(item, unidades)} initial={item.stock >= 1 ? 1 : 0} onAdd={onAdd} />
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 

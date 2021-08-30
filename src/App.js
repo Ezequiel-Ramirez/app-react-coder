@@ -4,7 +4,6 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Cart from "./components/Cart"
 import Formulario from "./components/Formulario"
-//bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import CartContext from "./components/CartContext";
 
@@ -15,14 +14,9 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route path="/category/:id" >
-            <ItemListContainer />
-          </Route>
-          <Route path="/category/:id" exact>
-            <ItemListContainer />
-          </Route>
+         
           <Route path="/category/:id">
-            <ItemListContainer />
+            <ItemListContainer greeting="Últimos Ingresos" />
           </Route>
           <Route path="/" exact>
             <ItemListContainer greeting="Bienvenidos a mi tienda On-Line" />

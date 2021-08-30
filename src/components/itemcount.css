@@ -1,10 +1,33 @@
 .divContador{
     width: 100%;
-    display: flex;
-    justify-content: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+    
 }
-.divContador div{
-    margin-left: 10px;
-    
-    
+.divContadorInternos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+}
+.divContadorInternos:first-child p{
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+.divContadorInternos:first-child button{
+    border-radius: 100%;
+    margin: 10px;
+    padding: 15px;
+    font-size: 1.2em;
+    border-color: lightcoral;
+}
+.divContadorInternos:first-child button:hover{
+    background-color: lightcoral;
+    font-weight: bold;
+}
+.divContadorInternos:last-child button{
+    background-color: lightcoral;
+    padding: 10px;
+    font-size: 1.2em;
+    border-radius: 10px;
 }
