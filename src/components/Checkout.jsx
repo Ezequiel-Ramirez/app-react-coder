@@ -8,7 +8,7 @@ import { Button } from 'react-bootstrap';
 import '../style/checkout.css'
 
 const Checkout = () => {
-    const { carrito, nombre, setNombre, telefono, setTelefono, email, setEmail, precioTotal, clear, upToDayStock} = useContext(contexto);
+    const { carrito, nombre, setNombre, telefono, setTelefono, email, setEmail, precioTotal, clear, upToDayStock, dataOrder, data, setData} = useContext(contexto);
     const [error, setError] = useState(false);
     const [orderId, setOrderId] = useState();
     const [procesado, setProcesado] = useState(false);
@@ -64,11 +64,14 @@ const Checkout = () => {
         }
     }
     useEffect(() => {
+        dataOrder(orderId)
+        setData("");       
         setTimeout(() => {
             setSpiner(false)
-        }, 2000)        
+        }, 2000) ;   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [procesado]);
-    
+
     if (spiner === true) {
         return (
             <>
@@ -107,11 +110,16 @@ const Checkout = () => {
                         </form>
                     </div>
                     {procesado ?
-                        <div className="col-md-6">
-                            <h3>Su compra ha sido procesada por un total de $ {precioTotal}</h3>
+                        <div className="col-md-6 mb-5">
                             <h4 className="orden">Número de orden: <span> {orderId}</span></h4>
-                            <h6>Gracias por elegirnos!!!</h6>
-                            <Link to={`/`}> <Button variant="success" className="mt-5" >Volver a la Tienda</Button> </Link>
+                            <h3>Su compra ha sido procesada por un total de $ {precioTotal}</h3>
+                            <p className="dataTicket">Datos de Facturación:</p>
+                            <h5>Nombre: {data.buyer.nombre}</h5>
+                            <h5>Teléfono: {data.buyer.telefono}</h5>
+                            <h5>Email: {data.buyer.email}</h5>
+                            <h5>Productos: {data.items.map(product => { return <li key={product.id} className="list">{product.title}</li> })}</h5>
+                            <h6 className="dataTicket">Gracias por elegirnos!!!</h6>
+                            <Link to={`/`}> <Button variant="success" className="mb-5" >Volver a la Tienda</Button> </Link>
                         </div>
                         :
                         <div className="col-md-6">

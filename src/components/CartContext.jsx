@@ -10,9 +10,10 @@ const CartContext = ({ children }) => {
     const [nombre, setNombre] = useState("");
     const [telefono, setTelefono] = useState("");
     const [email, setEmail] = useState("");
-    
+    const [data, setData] = useState("");
 
     const db = firestore
+    const orders = db.collection("orders");
     
 
     function addItem(producto, nuevaCantidad) {
@@ -56,10 +57,19 @@ const CartContext = ({ children }) => {
         await batch.commit().then(r => r);
     }
 
-    
+    const dataOrder = (id) =>{
+        const filtro = orders.doc(id)
+        const query = filtro.get()
+        query.then((resultados) => {
+            const id = resultados.id
+            const data = resultados.data()
+            const data_order = { id, ...data }
+            setData(data_order)
+        })
+    }
 
     return (
-        <Provider value={{ carrito, setCarrito, addItem, removeItem, clear, precioTotal, setPrecioTotal, calcularTotal, badge, nombre, setNombre, telefono, setTelefono, email, setEmail, upToDayStock }}>
+        <Provider value={{ carrito, setCarrito, addItem, removeItem, clear, precioTotal, setPrecioTotal, calcularTotal, badge, nombre, setNombre, telefono, setTelefono, email, setEmail, upToDayStock, dataOrder, data, setData }}>
             {children}
         </Provider>
     )
