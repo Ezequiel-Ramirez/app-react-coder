@@ -5,10 +5,10 @@ import { firestore } from "../firebase";
 import firebase from 'firebase/app';
 import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
-import '../style/form.css'
+import '../style/checkout.css'
 
-const Formulario = () => {
-    const { carrito, nombre, setNombre, telefono, setTelefono, email, setEmail, precioTotal, clear } = useContext(contexto);
+const Checkout = () => {
+    const { carrito, nombre, setNombre, telefono, setTelefono, email, setEmail, precioTotal, clear, upToDayStock} = useContext(contexto);
     const [error, setError] = useState(false);
     const [orderId, setOrderId] = useState();
     const [procesado, setProcesado] = useState(false);
@@ -33,15 +33,6 @@ const Formulario = () => {
         } else {
             return false
         }
-    }
-    async function upToDayStock() {
-        const itemsToUpdate = db.collection("items").where(firebase.firestore.FieldPath.documentId(), 'in', carrito.map(i => i.id));
-        const query = await itemsToUpdate.get();
-        const batch = db.batch();
-        query.docs.forEach((itemActualizable, itemid) => {
-            batch.update(itemActualizable.ref, { stock: itemActualizable.data().stock - carrito[itemid].cantidad });
-        })
-        await batch.commit().then(r => r);
     }
 
     const realizarPedido = (e) => {
@@ -75,9 +66,8 @@ const Formulario = () => {
     useEffect(() => {
         setTimeout(() => {
             setSpiner(false)
-        }, 2000)
-    }, [procesado])
-
+        }, 2000)        
+    }, [procesado]);
     
     if (spiner === true) {
         return (
@@ -93,8 +83,8 @@ const Formulario = () => {
                 <div className="row mt-5">
                     <div className="col-md-6 p-3">
                         <form className="formCart">
-                            {error ? <><p className="msjError">Por favor complete todos los datos!!!</p>
-
+                            {error ? 
+                                <><p className="msjError">Por favor complete todos los datos!!!</p>
                                 <label >Nombre:</label>
                                 <input className="outLine" type="text" placeholder="Ingrese su Nombre" id="nombre" onChange={guardarNombre} />
                                 <label >Teléfono:</label>
@@ -134,4 +124,4 @@ const Formulario = () => {
     }
 }
 
-export default Formulario
+export default Checkout

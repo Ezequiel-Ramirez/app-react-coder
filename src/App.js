@@ -3,7 +3,7 @@ import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Cart from "./components/Cart"
-import Formulario from "./components/Formulario"
+import Checkout from "./components/Checkout"
 import "bootstrap/dist/css/bootstrap.min.css";
 import CartContext from "./components/CartContext";
 import Footer from "./components/Footer";
@@ -22,7 +22,7 @@ const App = () => {
             <ItemDetailContainer />
           </Route>
           <Route path="/formulario">
-            <Formulario></Formulario>
+            <Checkout></Checkout>
           </Route>
           <Route path="/" exact>
             <ItemListContainer greeting="Bienvenidos a mi tienda On-Line" />
