@@ -11,7 +11,7 @@ const Cart = () => {
     const { carrito, clear, precioTotal } = useContext(contexto);
 
     return (
-        <Container >
+        <Container className="mb-5">
             <svg className="titulo">
                 <text x="5%" y="75%"  >Carrito de Compras:</text>
             </svg>
@@ -22,9 +22,9 @@ const Cart = () => {
                 <div className="total"><div className="importe__total"><p>Total a Pagar: $<span> {precioTotal}</span></p></div></div> : null
             }
             <div className="d-flex justify-content-evenly">
-                {carrito.length > 0 ? <Button variant="danger" className="mt-5" onClick={clear}>Limpiar Carrito</Button> : null}
-                {carrito.length > 0 ? <Link to={`/`}> <Button variant="success" className="mt-5" >Seguir Comprando</Button> </Link> : null}
-                {carrito.length > 0 ? <Link to={`/formulario`}> <Button variant="warning" className="mt-5" >Finalizar Compra y Datos de Envío</Button> </Link> : null}
+                {carrito.length > 0 ? <Button variant="danger" className="mt-2" onClick={clear}>Limpiar Carrito</Button> : null}
+                {carrito.length > 0 ? <Link to={`/`}> <Button variant="success" className="mt-2" >Seguir Comprando</Button> </Link> : null}
+                {carrito.length > 0 ? <Link to={`/formulario`}> <Button variant="warning" className="mt-2" >Finalizar Compra y Datos de Envío</Button> </Link> : null}
             </div>
 
         </Container>

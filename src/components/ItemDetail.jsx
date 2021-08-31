@@ -28,11 +28,11 @@ const ItemDetail = ({ item }) => {
 
     if (unidades > 0) {
         return (
-            <Container>
-                <Row>
-                    <Col className="md-8">
-                        <CardColumns>
-                            <Card>
+            <Container className="mb-5">
+                <Row className="mb-5">
+                    <Col className="md-8 mb-5">
+                        <CardColumns >
+                            <Card >
                                 <Card.Body>
                                     <Card.Title><h1>{item.title}</h1>
                                     </Card.Title>
@@ -55,9 +55,9 @@ const ItemDetail = ({ item }) => {
                                 <FontAwesomeIcon  icon={faStar}  className="iconoStar"/>
                                 <FontAwesomeIcon  icon={faStar}  className="iconoStar"/>
                                 <FontAwesomeIcon  icon={faStarHalfAlt}  className="iconoStar"/>
-                                <ItemCount stock={item.stock} cantidad={cantidad} addItem={() => addItem(item, unidades)} initial={item.stock >= 1 ? 1 : 0} onAdd={onAdd} />
+                               
                             </Card.Body>
-                            <LinkContainer to="/cart"><Button variant="success" onClick={() => addItem(item, unidades)}>Agregar al Carrito</Button></LinkContainer>
+                            <LinkContainer to="/cart"><Button variant="success" onClick={() => addItem(item, unidades)}>Agregar al Carrito:  {unidades} unidades</Button></LinkContainer>
                         </Card>
                     </Col>
                 </Row>
@@ -65,10 +65,10 @@ const ItemDetail = ({ item }) => {
         )
     } else {
         return (
-            <Container>
-                <Row>
-                    <Col className="md-8">
-                        <CardColumns>
+            <Container className="mb-5">
+                <Row className="mb-5">
+                    <Col className="md-8 mb-5">
+                        <CardColumns >
                             <Card>
                                 <Card.Body>
                                     <Card.Title><h1>{item.title}</h1>

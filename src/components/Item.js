@@ -9,7 +9,7 @@ const Item = ({ product }) => {
 
     return (
         <>
-            <Col md="4 m-auto">
+            <Col md="4 m-auto" className="mb-5">
                 <Card className="text-center mt-3">
                     <Card.Img variant="top" src={product.image} />
                     <Card.Body>
