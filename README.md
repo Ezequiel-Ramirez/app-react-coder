@@ -1,8 +1,10 @@
+![Center Bike - Tienda On-Line](https://user-images.githubusercontent.com/78183135/131588888-6c1ccad8-ca71-40a3-a028-ccbbff16a087.gif)
 # [Proyecto de tienda para Curso de React](https://github.com/Ezequiel-Ramirez/app-react-coder)
 
 En este proyecto se trató de seguir las pautas y consignas del curso para completar una tienda on line con todos los componentes posible y haciendo uso de la gran mayoria de funcionalidades que nos brinda React.
 
-![Ecommerce React](https://user-images.githubusercontent.com/78183135/130293888-d6bd2d24-8961-4f86-b54e-8fbc96bd171e.gif)
+![Center Bike - Tienda On-Line](https://user-images.githubusercontent.com/78183135/131588938-d6e2fefb-4e2d-49e6-b7db-6f17be5c57a3.gif)
+
 
 ## Dependencias externas al curso
 
