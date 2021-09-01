@@ -9,11 +9,11 @@ Desarrollado con React
 
 ### Para iniciar el servidor
 Desde la consola de comandos y una vez situados en la carpeta del proyecto se ejecuta:
-npm run start
+npm start
 
 ### Para compilar todo
 Para pasar a modo de distribución del proyecto se ejecuta:
-npm run build
+npm build
 
 ## Dependencias externas al curso
 Elegí Bootstrap como framework de CSS porque me pude centrar mucho más en la funcionalidad en principio, y luego finalicé el diseño con puro css para darle una impronta personal y mejorar algunos resultados que no me ofrece Bootstrap.
